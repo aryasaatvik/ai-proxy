@@ -1,7 +1,7 @@
 import { MetricData, ResourceMetrics } from "@opentelemetry/sdk-metrics";
 import { Resource } from "@opentelemetry/resources";
-import { PrometheusSerializer } from "@braintrust/proxy/src/PrometheusSerializer";
-import { aggregateMetrics, prometheusSerialize } from "@braintrust/proxy";
+import { PrometheusSerializer } from "ai-proxy/src/PrometheusSerializer";
+import { aggregateMetrics, prometheusSerialize } from "ai-proxy";
 
 declare global {
   interface Env {

@@ -1,4 +1,4 @@
-import { Secrets } from "@braintrust/proxy/edge";
+import { Secrets } from "ai-proxy/edge";
 
 declare global {
   interface Env extends Secrets {

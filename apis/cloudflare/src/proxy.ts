@@ -5,8 +5,8 @@ import {
   makeFetchApiSecrets,
   encryptedGet,
   getApiSecret,
-} from "@braintrust/proxy/edge";
-import { NOOP_METER_PROVIDER, initMetrics } from "@braintrust/proxy";
+} from "ai-proxy/edge";
+import { NOOP_METER_PROVIDER, initMetrics } from "ai-proxy";
 import { PrometheusMetricAggregator } from "./metric-aggregator";
 import { handleRealtimeProxy } from "./realtime";
 import { braintrustAppUrl } from "./env";

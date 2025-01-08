@@ -1,10 +1,10 @@
 import { RealtimeAPI } from "@openai/realtime-api-beta";
-import { APISecret, ProxyLoggingParam } from "@braintrust/proxy/schema";
-import { ORG_NAME_HEADER } from "@braintrust/proxy";
+import { APISecret, ProxyLoggingParam } from "ai-proxy/schema";
+import { ORG_NAME_HEADER } from "ai-proxy";
 import {
   isTempCredential,
   verifyTempCredentials,
-} from "@braintrust/proxy/utils";
+} from "ai-proxy/utils/tempCredentials";
 import { OpenAiRealtimeLogger } from "./realtime-logger";
 import { braintrustAppUrl } from "./env";
 
@@ -138,7 +138,7 @@ export async function handleRealtimeProxy({
     const messageHandler = (data: string) => {
       try {
         const parsedEvent = JSON.parse(data);
-        realtimeApi.send(parsedEvent.type, parsedEvent);
+        realtimeApi?.send(parsedEvent.type, parsedEvent);
         try {
           realtimeLogger?.handleMessageClient(parsedEvent);
         } catch (e) {
@@ -151,7 +151,7 @@ export async function handleRealtimeProxy({
 
     const data =
       typeof event.data === "string" ? event.data : event.data.toString();
-    if (!realtimeApi.isConnected()) {
+    if (!realtimeApi?.isConnected()) {
       messageQueue.push(data);
     } else {
       messageHandler(data);
@@ -160,7 +160,7 @@ export async function handleRealtimeProxy({
 
   server.addEventListener("close", () => {
     console.log("Closing server-side because the client closed the connection");
-    realtimeApi.disconnect();
+    realtimeApi?.disconnect();
     if (realtimeLogger) {
       ctx.waitUntil(realtimeLogger.close());
     }

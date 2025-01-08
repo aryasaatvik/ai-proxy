@@ -1,27 +1,26 @@
 {
-  "name": "@braintrust/ai-proxy-wrangler",
+  "name": "ai-proxy-wrangler",
   "version": "0.0.0",
   "private": true,
-  "main": "./dist/lib.mjs",
+  "type": "module",
   "scripts": {
     "deploy": "wrangler deploy",
+    "build": "wrangler deploy --dry-run",
     "dev": "wrangler dev --port 8787 --inspector-port 9299",
-    "start": "wrangler dev",
-    "watch": "tsup --watch --dts",
-    "build": "tsup --clean --dts"
+    "start": "wrangler dev"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20241022.0",
     "itty-router": "^3.0.12",
     "tsup": "^8.0.1",
-    "typescript": "^5.0.4",
+    "typescript": "^5.3.3",
     "wrangler": "^3.83.0"
   },
   "dependencies": {
-    "@braintrust/proxy": "workspace:*",
     "@openai/realtime-api-beta": "github:openai/openai-realtime-api-beta#cd8a9251dcfb0cba0d7b0501e9ff36c915f5090f",
-    "@opentelemetry/resources": "^1.18.1",
-    "@opentelemetry/sdk-metrics": "^1.18.1",
+    "@opentelemetry/resources": "^1.19.0",
+    "@opentelemetry/sdk-metrics": "^1.19.0",
+    "ai-proxy": "workspace:*",
     "braintrust": "^0.0.167",
     "dotenv": "^16.3.1",
     "zod": "3.22.4"

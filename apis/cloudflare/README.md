@@ -11,7 +11,7 @@ You'll need the following prerequisites:
 - A [Cloudflare account](https://www.cloudflare.com/)
 - [pnpm](https://pnpm.io/installation)
 
-By default, the worker uses the local `@braintrust/proxy` package, which you need to build. From the
+By default, the worker uses the local `ai-proxy` package, which you need to build. From the
 [repository's root](../..), run:
 
 ```bash copy
@@ -43,5 +43,5 @@ npx wrangler deploy
 ## Integrating into your own project
 
 If you'd like to use the proxy in your own project, that's fine too! Simply install the
-`@braintrust/proxy` package with your favorite package manager, and follow/customize the
+`ai-proxy` package with your favorite package manager, and follow/customize the
 implementation in [`proxy.ts`](./src/proxy.ts).

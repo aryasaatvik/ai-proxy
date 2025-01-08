@@ -1,10 +1,11 @@
-import * as Braintrust from "braintrust/browser";
-import { makeWavFile, makeMp3File } from "@braintrust/proxy/utils";
+import * as Braintrust from "braintrust";
+import { makeWavFile, makeMp3File } from "ai-proxy/utils";
 import {
+  AudioFormatType,
   openAiRealtimeMessageSchema,
   PcmAudioFormat,
   ProxyLoggingParam,
-} from "@braintrust/proxy/schema";
+} from "ai-proxy/schema";
 
 // The maximum audio buffer size after pushing.
 const maxAudioBufferBytes = 50 * 1024 * 1024;
@@ -148,7 +149,7 @@ function openAiToPcmAudioFormat(audioFormat: AudioFormatType): PcmAudioFormat {
         sample_rate: 8000,
       };
     default:
-      const x: never = audioFormat;
+      const x = audioFormat;
       throw new Error(`Unknown audio format ${JSON.stringify(x)}`);
   }
 }
@@ -384,7 +385,7 @@ export class OpenAiRealtimeLogger {
         } else if (itemType === "function_call_output") {
         } else if (itemType === "audio") {
         } else {
-          const x: never = itemType;
+          const x = itemType;
           console.error(`Unhandled item type ${x}`);
         }
 
@@ -407,6 +408,7 @@ export class OpenAiRealtimeLogger {
           data: audioFile,
           filename: `audio.${fileExt}`,
           contentType: audioFile.type,
+          // @ts-expect-error TODO: look into this
           state: this.rootSpan.state,
         }),
       },

@@ -4,7 +4,7 @@ import {
   handlePrometheusScrape,
   originWhitelist,
 } from "./proxy";
-import { getCorsHeaders } from "@braintrust/proxy/edge";
+import { getCorsHeaders } from "ai-proxy/edge";
 export { PrometheusMetricAggregator } from "./metric-aggregator";
 
 // The fetch handler is invoked when this worker receives a HTTP(S) request
