@@ -1,6 +1,6 @@
 import bsearch from "binary-search";
 import { Env } from "./env";
-import { APISecret } from "@braintrust/proxy/schema";
+import { APISecret } from "ai-proxy/schema";
 
 export async function lookupApiSecret(
   useCache: boolean,
@@ -29,7 +29,8 @@ export async function lookupApiSecret(
       }),
     });
     if (response.ok) {
-      secrets = (await response.json()).filter(
+      const data = await response.json() as APISecret[];
+      secrets = data.filter(
         (row: APISecret) => Env.orgName === "*" || row.org_name === Env.orgName,
       );
     } else {

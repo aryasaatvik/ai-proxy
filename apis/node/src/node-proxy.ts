@@ -4,10 +4,11 @@ import * as crypto from "crypto";
 // https://stackoverflow.com/questions/73308289/typescript-error-converting-a-native-fetch-body-webstream-to-a-node-stream
 import type * as streamWeb from "node:stream/web";
 
-import { proxyV1 } from "@braintrust/proxy";
+import { proxyV1 } from "ai-proxy";
 
 import { getRedis } from "./cache";
 import { lookupApiSecret } from "./login";
+import { TransformStream } from "node:stream/web";
 
 export async function nodeProxyV1({
   method,
