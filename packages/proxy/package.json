@@ -1,6 +1,6 @@
 {
   "name": "ai-proxy",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A proxy server that load balances across AI providers.",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
