@@ -2,25 +2,25 @@ import { v4 as uuidv4 } from "uuid";
 import {
   ChatCompletion,
   ChatCompletionChunk,
-  ChatCompletionCreateParams,
   ChatCompletionMessageToolCall,
   ChatCompletionTool,
   ChatCompletionToolMessageParam,
-  CompletionUsage,
-} from "openai/resources";
+} from "openai/resources/chat/completions";
+import { CompletionUsage } from "openai/resources/completions";
 import { getTimestampInSeconds, isEmpty } from "../util";
 import {
   AnthropicContent,
   AnthropicImageBlock,
   anthropicImageBlockSchema,
-} from "@schema";
+} from "@/schema";
 import { Message } from "@braintrust/core/typespecs";
 import { z } from "zod";
 import {
   MessageParam,
+  TextBlockParam,
   ToolResultBlockParam,
   ToolUseBlockParam,
-} from "@anthropic-ai/sdk/resources";
+} from "@anthropic-ai/sdk/resources/messages";
 import { convertImageToBase64 } from "./util";
 import { MessageCreateParamsBase } from "@anthropic-ai/sdk/resources/messages";
 import { ChatCompletionCreateParamsBase } from "openai/resources/chat/completions";
@@ -349,10 +349,10 @@ export function anthropicCompletionToOpenAICompletion(
         message: {
           role: "assistant",
           // Anthropic inserts extra whitespace at the beginning of the completion
-          content: firstText ? firstText.text.trimStart() : null,
+          content: (firstText && firstText.type === "text") ? firstText.text.trimStart() : null,
           tool_calls: isFunction
             ? undefined
-            : firstTool
+            : firstTool && firstTool.type === "tool_use"
               ? [
                   {
                     id: firstTool.id,
@@ -365,13 +365,12 @@ export function anthropicCompletionToOpenAICompletion(
                 ]
               : undefined,
           function_call:
-            isFunction && firstTool
+            isFunction && firstTool && firstTool.type === "tool_use"
               ? {
                   name: firstTool.name,
                   arguments: JSON.stringify(firstTool.input),
                 }
               : undefined,
-          refusal: null,
         },
       },
     ],

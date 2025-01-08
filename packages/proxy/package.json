@@ -1,13 +1,12 @@
 {
-  "name": "@braintrust/proxy",
-  "version": "0.0.7",
+  "name": "ai-proxy",
+  "version": "0.0.1",
   "description": "A proxy server that load balances across AI providers.",
-  "main": "./dist/index.js",
-  "module": "./dist/index.mjs",
+  "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "scripts": {
-    "build": "tsup",
-    "watch": "tsup --watch",
+    "build": "tsc",
+    "watch": "tsc --watch",
     "clean": "rm -r dist/*",
     "test": "vitest run"
   },
@@ -15,27 +14,33 @@
     "./package.json": "./package.json",
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/index.mjs",
-      "module": "./dist/index.mjs",
-      "require": "./dist/index.js"
-    },
-    "./edge": {
-      "types": "./edge/dist/index.d.ts",
-      "import": "./edge/dist/index.mjs",
-      "module": "./edge/dist/index.mjs",
-      "require": "./edge/dist/index.js"
+      "import": "./dist/index.js",
+      "module": "./dist/index.js"
     },
     "./schema": {
-      "types": "./schema/dist/index.d.ts",
-      "import": "./schema/dist/index.mjs",
-      "module": "./schema/dist/index.mjs",
-      "require": "./schema/dist/index.js"
+      "types": "./dist/schema/index.d.ts",
+      "import": "./dist/schema/index.js",
+      "module": "./dist/schema/index.js"
     },
     "./utils": {
-      "types": "./utils/dist/index.d.ts",
-      "import": "./utils/dist/index.mjs",
-      "module": "./utils/dist/index.mjs",
-      "require": "./utils/dist/index.js"
+      "types": "./dist/utils/index.d.ts",
+      "import": "./dist/utils/index.js",
+      "module": "./dist/utils/index.js"
+    },
+    "./edge": {
+      "types": "./dist/edge/index.d.ts",
+      "import": "./dist/edge/index.js",
+      "module": "./dist/edge/index.js"
+    },
+    "./providers": {
+      "types": "./dist/providers/index.d.ts",
+      "import": "./dist/providers/index.js",
+      "module": "./dist/providers/index.js"
+    },
+    "./*": {
+      "types": "./dist/*.d.ts",
+      "import": "./dist/*.js",
+      "module": "./dist/*.js"
     }
   },
   "files": [
@@ -50,10 +55,11 @@
   "homepage": "https://www.braintrust.dev/docs/guides/proxy",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/braintrustdata/braintrust-proxy.git"
+    "url": "git+https://github.com/aryasaatvik/ai-proxy.git",
+    "directory": "packages/proxy"
   },
   "bugs": {
-    "url": "https://github.com/braintrustdata/braintrust-proxy/issues"
+    "url": "https://github.com/aryasaatvik/ai-proxy/issues"
   },
   "keywords": [
     "ai",
@@ -71,8 +77,6 @@
     "@types/node": "^20.10.5",
     "@types/uuid": "^9.0.7",
     "esbuild": "^0.19.10",
-    "npm-run-all": "^4.1.5",
-    "tsup": "^8.0.1",
     "typescript": "^5.3.3",
     "vite-tsconfig-paths": "^4.3.2",
     "vitest": "^2.1.3"
@@ -92,6 +96,6 @@
     "jsonwebtoken": "^9.0.2",
     "openai": "4.47.1",
     "uuid": "^9.0.1",
-    "zod": "^3.22.4"
+    "zod": "3.22.4"
   }
 }

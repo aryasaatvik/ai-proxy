@@ -11,7 +11,7 @@ import {
   translateParams,
   ModelFormat,
   APISecret,
-} from "@schema";
+} from "@/schema";
 import {
   ProxyBadRequestError,
   flattenChunks,
@@ -45,20 +45,24 @@ import {
   ChatCompletion,
   ChatCompletionChunk,
   ChatCompletionCreateParams,
+} from "openai/resources/chat/completions";
+import {
   CompletionUsage,
-  CreateEmbeddingResponse,
-} from "openai/resources";
+} from "openai/resources/completions";
+import {
+  CreateEmbeddingResponse
+} from "openai/resources/embeddings";
 import { fetchBedrockAnthropic, fetchBedrockOpenAI } from "./providers/bedrock";
 import { Buffer } from "node:buffer";
 import { ExperimentLogPartialArgs } from "@braintrust/core";
-import { MessageParam } from "@anthropic-ai/sdk/resources";
+import { MessageParam } from "@anthropic-ai/sdk/resources/messages";
 import {
   getCurrentUnixTimestamp,
   parseOpenAIStream,
   isTempCredential,
   makeTempCredentials,
   verifyTempCredentials,
-} from "utils";
+} from "./utils";
 import { openAIChatCompletionToChatEvent } from "./providers/openai";
 import { ChatCompletionCreateParamsBase } from "openai/resources/chat/completions";
 

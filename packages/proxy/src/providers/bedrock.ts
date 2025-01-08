@@ -6,18 +6,18 @@ import {
   InvokeModelWithResponseStreamCommand,
   ResponseStream,
 } from "@aws-sdk/client-bedrock-runtime";
-import { APISecret, BedrockMetadata } from "@schema";
+import { APISecret, BedrockMetadata } from "@/schema";
 import {
   anthropicCompletionToOpenAICompletion,
   anthropicEventToOpenAIEvent,
 } from "./anthropic";
 import {
-  ChatCompletion,
   ChatCompletionChunk,
-  ChatCompletionCreateParams,
   ChatCompletionMessageParam,
-  CompletionUsage,
-} from "openai/resources";
+} from "openai/resources/chat/completions";
+import {
+  CompletionUsage
+} from "openai/resources/completions";
 import { getTimestampInSeconds, writeToReadable } from "..";
 
 const brt = new BedrockRuntimeClient({});

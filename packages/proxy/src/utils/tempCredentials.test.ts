@@ -15,7 +15,7 @@ import { base64ToArrayBuffer } from "./encrypt";
 import {
   tempCredentialJwtPayloadSchema,
   TempCredentialsCacheValue,
-} from "@schema";
+} from "@/schema";
 
 test("isTempCredential", () => {
   expect(isTempCredential("")).toStrictEqual(false);

@@ -7,7 +7,7 @@ import {
   InlineDataPart,
   Part,
 } from "@google/generative-ai";
-import { ChatCompletion, ChatCompletionChunk } from "openai/resources";
+import { ChatCompletion, ChatCompletionChunk } from "openai/resources/chat/completions";
 import { getTimestampInSeconds } from "..";
 import { convertImageToBase64 } from "./util";
 

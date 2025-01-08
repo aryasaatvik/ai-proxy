@@ -1,16 +1,16 @@
-import { DEFAULT_BRAINTRUST_APP_URL } from "@lib/constants";
-import { flushMetrics } from "@lib/metrics";
-import { proxyV1 } from "@lib/proxy";
-import { isEmpty } from "@lib/util";
+import { DEFAULT_BRAINTRUST_APP_URL } from "@/constants";
+import { flushMetrics } from "@/metrics";
+import { proxyV1 } from "@/proxy";
+import { isEmpty } from "@/util";
 import { MeterProvider } from "@opentelemetry/sdk-metrics";
 
-import { APISecret, getModelEndpointTypes, isFireworksModel, isAnthropicModel, isBedrockModel, isGroqModel, isOpenAIModel, isGoogleModel, isXAIModel, isMistralModel, isPerplexityModel } from "@schema";
-import { verifyTempCredentials, isTempCredential } from "utils";
+import { APISecret, getModelEndpointTypes, isFireworksModel, isAnthropicModel, isBedrockModel, isGroqModel, isOpenAIModel, isGoogleModel, isXAIModel, isMistralModel, isPerplexityModel } from "@/schema";
+import { verifyTempCredentials, isTempCredential } from "@/utils/tempCredentials";
 import {
   decryptMessage,
   EncryptedMessage,
   encryptMessage,
-} from "utils/encrypt";
+} from "@/utils/encrypt";
 
 export { FlushingExporter } from "./exporter";
 

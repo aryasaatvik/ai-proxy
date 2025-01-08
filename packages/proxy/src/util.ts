@@ -1,5 +1,3 @@
-import { ModelEndpointType } from "../schema";
-
 export function parseAuthHeader(
   headers: Record<string, string | string[] | undefined>,
 ) {

@@ -1,4 +1,4 @@
-import { ChatCompletionChunk, ChatCompletion } from "openai/resources";
+import { ChatCompletion, ChatCompletionChunk } from "openai/resources/chat/completions";
 
 export function openAIChatCompletionToChatEvent(
   completion: ChatCompletion,

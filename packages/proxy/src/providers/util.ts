@@ -1,4 +1,4 @@
-import { arrayBufferToBase64 } from "utils";
+import { arrayBufferToBase64 } from "@/utils";
 
 const base64ImagePattern =
   /^data:(image\/(?:jpeg|png|gif|webp));base64,([A-Za-z0-9+/]+={0,2})$/;

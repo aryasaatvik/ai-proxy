@@ -13,7 +13,7 @@ import {
   verify as jwtVerify,
   decode as jwtDecode,
 } from "jsonwebtoken";
-import { isEmpty } from "@lib/util";
+import { isEmpty } from "@/util";
 
 const JWT_ALGORITHM = "HS256";
 
